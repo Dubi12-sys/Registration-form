@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Registration Form</title>
+  <style>
+    /* ====== Global Styles ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #6c5ce7, #74b9ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .form-container {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 500px;
+      padding: 30px 40px;
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2d3436;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #2d3436;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #b2bec3;
+      font-size: 15px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #6c5ce7;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      background: #6c5ce7;
+      color: #fff;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: #a29bfe;
+    }
+
+    .form-footer {
+      text-align: center;
+      margin-top: 15px;
+      color: #636e72;
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>School Registration Form</h2>
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name" />
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required />
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="course">Preferred Course:</label>
+        <select id="course" name="course" required>
+          <option value="">Select a course</option>
+          <option value="STEM">STEM (Science, Technology, Engineering & Math)</option>
+          <option value="ABM">ABM (Accountancy, Business & Management)</option>
+          <option value="HUMSS">HUMSS (Humanities & Social Sciences)</option>
+          <option value="ICT">ICT (Information & Communication Technology)</option>
+          <option value="GAS">GAS (General Academic Strand)</option>
+          <option value="TVL">TVL (Technical-Vocational-Livelihood)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required placeholder="example@email.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Contact Number:</label>
+        <input type="tel" id="phone" name="phone" required placeholder="09XXXXXXXXX" pattern="[0-9]{11}" />
+      </div>
+
+      <div class="form-group">
+        <label for="address">Home Address:</label>
+        <textarea id="address" name="address" rows="3" required placeholder="Enter your address"></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Register</button>
+    </form>
+
+    <div class="form-footer">
+      <p>© 2025 Springfield Academy</p>
+    </div>
+  </div>
+
+  <script>
+    // ====== JavaScript for Confirmation Popup ======
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // prevent actual form submission
+
+      const name = document.getElementById("fullname").value;
+      const course = document.getElementById("course").value;
+
+      if (name && course) {
+        alert(`✅ Registration Successful!\n\nThank you, ${name}.\nYou have registered for the ${course} course.`);
+        this.reset(); // clear the form
+      } else {
+        alert("⚠️ Please complete all required fields before submitting.");
+      }
+    });
+  </script>
+
+</body>
+</html>
